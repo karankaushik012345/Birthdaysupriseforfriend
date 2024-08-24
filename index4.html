@@ -109,7 +109,25 @@
     const y = Math.floor(Math.random() * (window.innerHeight - element.clientHeight));
     return { x, y };
 }
+ const video = document.getElementById('myVideo');
 
+        // Function to pause the video when the link is clicked
+        document.querySelector('a').addEventListener('click', () => {
+            video.pause();
+        });
+
+        // IntersectionObserver to play/pause video based on visibility
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        });
+
+        observer.observe(video);
 
 
 
